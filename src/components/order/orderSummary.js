@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Card from 'react-bootstrap/Card';
-import OrderButton from './orderButton'
+import ButtonGroup from './buttonGroup'
 import ItemSummary from './itemSummary';
-import { format } from '../utils';
+import { format } from '../../utils';
 
 const OrderSummary = () => {
   const items = useSelector(state => state.items);
@@ -26,8 +26,7 @@ const OrderSummary = () => {
         )}
       </Card.Body>
       <Card.Footer>
-        <OrderButton enableButtons={true} text="Adicionar Novo Item" to={"/"} />
-        <OrderButton enableButtons={true} text="Finalizar Pedido" to={"/pedido"} />
+        <ButtonGroup enableButtons={true} />
       </Card.Footer>
     </Card>
   )

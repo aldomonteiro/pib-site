@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import Container from 'react-bootstrap/Container';
 
 import Layout from "../components/layout/layout";
-import Flavors from '../components/flavors';
+import Flavors from '../components/order/flavors';
 import SEO from "../components/layout/seo";
 
 export default ({ data: { backend: { sizeOne } } }) => {

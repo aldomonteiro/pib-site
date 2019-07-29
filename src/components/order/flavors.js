@@ -6,14 +6,16 @@ import Card from 'react-bootstrap/Card';
 
 import ItemSummary from './itemSummary';
 import ButtonGroup from './buttonGroup';
-import { format } from '../utils';
-import { UPDATE_ITEM } from '../actions'
+import Notification from '../notification'
+import { format } from '../../utils';
+import { UPDATE_ITEM } from '../../actions'
 
 
-export default ({ pricings }) => {
+const Flavors = ({ pricings }) => {
   const currentItem = useSelector(state => state.currentItem);
   const item = useSelector(state => state.items).find(el => el.id === currentItem);
   const [selecteds, setSelecteds] = useState([]);
+  const [showNotif, setShowNotif] = useState(false);
   const dispatch = useDispatch();
   const activeCategory = item.flavors[0].categoryId;
 
@@ -31,8 +33,14 @@ export default ({ pricings }) => {
       newSelecteds = selecteds.filter(el => el !== val);
       setSelecteds(newSelecteds);
     } else {
-      newSelecteds = [val, ...selecteds];
-      setSelecteds([val, ...selecteds]);
+      if (selecteds.length >= item.split) {
+        newSelecteds = selecteds;
+        setShowNotif(true);
+      }
+      else {
+        newSelecteds = [val, ...selecteds];
+        setSelecteds([val, ...selecteds]);
+      }
     }
 
     const newFlavorsArr = []
@@ -91,6 +99,12 @@ export default ({ pricings }) => {
             </Accordion>
           </Card.Body>
         </Card>
+        <Notification
+          title="Número de sabores"
+          description="Você já escolheu todos os sabores"
+          show={showNotif}
+          setShow={setShowNotif}
+        />
       </div>
       <div style={{ height: '30vh', overflow: 'auto', margin: '0.5rem' }}>
         <ItemSummary item={item} />
@@ -99,3 +113,5 @@ export default ({ pricings }) => {
     </>
   )
 }
+
+export default Flavors;

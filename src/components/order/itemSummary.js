@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { format } from '../utils';
+import { format } from '../../utils';
 
 const ItemSummary = ({ item }) => {
   return item &&

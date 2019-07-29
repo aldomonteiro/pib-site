@@ -8,7 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import LogoCart from '../cart';
+import LogoCart from '../order/cart';
 
 import Header from "./header"
 // import "./layout.css"

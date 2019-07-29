@@ -3,14 +3,14 @@ import Container from 'react-bootstrap/Container';
 
 import Layout from "../components/layout/layout";
 import SEO from "../components/layout/seo"
-import OrderSummary from "../components/orderSummary";
+import ButtonGroup from '../components/delivery/buttonGroup';
 
 export default () => {
   return (
     <Layout>
-      <SEO title="Detalhes do Pedido" />
+      <SEO title="Dados de Entrega" />
       <Container fluid={true}>
-        <OrderSummary />
+        <ButtonGroup />
       </Container >
     </Layout >
   )
