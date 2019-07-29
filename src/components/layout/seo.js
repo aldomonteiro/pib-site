@@ -75,6 +75,18 @@ function SEO ({ description, lang, meta, title }) {
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous"
       />
+      <style type="text/css">
+        {`
+          .btn-flat {
+            background-color: gray;
+            color: white;
+          }
+          .btn-flat:not(:disabled).active {
+            background-color: purple;
+            color: white;
+          }
+        `}
+      </style>
     </Helmet>
   )
 }

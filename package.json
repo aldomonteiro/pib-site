@@ -1,17 +1,20 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "pizzaibot-site",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Pedidos via site do Pizzaibot",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Aldo Monteiro <aldomonteiro@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.1.0",
+    "@material-ui/icons": "^4.1.0",
     "bootstrap": "^4.3.1",
-    "gatsby": "^2.7.3",
+    "gatsby": "^2.13.41",
     "gatsby-image": "^2.1.1",
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-offline": "^2.1.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.1.1",
+    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gatsby-source-filesystem": "^2.0.37",
     "gatsby-source-graphql": "^2.0.18",
     "gatsby-transformer-sharp": "^2.1.19",
@@ -19,7 +22,12 @@
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-redux": "^7.1.0",
+    "react-scrollspy": "^3.4.0",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "styled-components": "^4.3.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

@@ -1,71 +1,68 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { useState } from "react"
+import { graphql } from "gatsby"
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from "../components/layout/layout"
+import SEO from "../components/layout/seo"
+import DetailsCard from '../components/detailsCard'
+import Menu from "../components/menu";
+import NavButton from '../components/navButton';
+import { st_h2 } from '../styles'
+import { format } from '../utils'
 
 const IndexPage = ({ data }) => {
+  const [selected, setSelected] = useState(null);
   const { backend: { categoryMany } } = data;
-  console.log(categoryMany);
-
-  const formatter = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
-  })
-
+  const handleClick = object => {
+    if (selected && object.id === selected.id)
+      setSelected(null)
+    else
+      setSelected(object)
+  }
   return (
     <Layout>
       <SEO title="Home" />
-      <Container>
-        {/* Stack the columns on mobile by making one full-width and the other half-width */}
-        {categoryMany.map((category, index) => {
-          return category.flavors && category.flavors.length > 0 && (
-            <Row key={index}>
-              <Col md={12}>
-                <Row>
-                  <Col xs={12} md={12} sm={12}>
-                    <h2>{category.name}</h2>
-                  </Col>
-                </Row>
-                {category.flavors.map((flavor, index) =>
-                  <>
-                    <Row key={index}>
-                      <Col xs={12} md={6} sm={6}>
-                        <h4>{flavor.flavor}</h4>
-                      </Col>
-                      <Col xs={12} md={6} sm={6}>
-                        {category.pricings && category.pricings.length > 0
-                          ? category.pricings.map((pricing) => pricing.size.size + ' ' + formatter.format(pricing.price) + ' ')
-                          : formatter.format(flavor.price)}
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={12} md={12} sm={12}>
-                        <p>{flavor.toppingsNames.map((topping) => topping.topping + ',')}</p>
-                      </Col>
-                    </Row>
-                  </>
-                )}
-              </Col>
-            </Row>
+      <Container fluid={true}>
+        <Menu categories={categoryMany} />
+        {categoryMany.map(category =>
+          category.flavors && category.flavors.length > 0 && (
+            // Used by Menu
+            <section key={category.id} id={'categ-' + category.id}>
+              <Row>
+                <Col md={12}>
+                  <h2 style={st_h2}>{category.name}</h2>
+                  {category.flavors.map(flavor =>
+                    <DetailsCard key={flavor.id}
+                      selected={selected && selected.id === flavor.id}
+                      title={flavor.id + ' - ' + flavor.flavor}
+                      subTitle={category.pricings.map(pricing => pricing.size.shortening + ' - ' + format(pricing.price)).join(', ')}
+                      text={flavor.toppingsNames.map(topping => topping.topping).join(', ')}
+                      object={{ ...flavor, categoryId: category.id, name: category.name }}
+                      type="flavor"
+                      to={`/tamanhos/${category.name}`}
+                      handleClick={handleClick}
+                    />
+                  )}
+                </Col>
+              </Row>
+            </section>
           )
-        })}
-      </Container>
-    </Layout>
+        )}
+      </Container >
+      {selected && <NavButton to={`/tamanhos/${selected.name}`} object={selected} type="flavor" />}
+    </Layout >
   )
 }
 
 export default IndexPage
 
-export const query = graphql`
-  query {
+export const pageQuery = graphql`
+  query ($pageId: String!)
+  {
     backend {
-      categoryMany (filter:{pageId: "938611509676235"}) {
+      categoryMany (filter: { pageId: $pageId }) {
         id
         name
         flavors {
@@ -81,6 +78,7 @@ export const query = graphql`
           size {
             size
             shortening
+            split
           }
           price
         }

@@ -620,3 +620,35 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.section-header {
+	text-align: center;
+	margin-bottom: 40px;
+}
+.section-header h3 {
+	color: #FFF100;
+	font-family: 'Yellowtail', cursive;
+	font-size: 40px;
+	letter-spacing: 0.8px;
+	margin-bottom: 15px;
+	margin-top: 0;
+}
+.section-header h5 {
+	color: #fff;
+	font-size: 45px;
+	font-weight: 600;
+	font-family: 'Poppins', sans-serif;
+	letter-spacing: 0.88px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+}
+.section-header p {
+	color: #777;
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	padding: 0 15px;
+	letter-spacing: 0.56px;
+	line-height: 26px;
+	margin-bottom: 0;
+	margin-top: 25px;
+}

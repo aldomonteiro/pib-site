@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Pizzaibot`,
+    description: `Cardápio e pedidos de pizza integrados ao Whatsapp`,
+    author: `Pizzaibot`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -41,6 +41,7 @@ module.exports = {
         refetchInterval: 60,
       },
     },
+    // 'gatsby-plugin-webpack-bundle-analyzer',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
