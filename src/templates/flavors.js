@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 import Layout from "../components/layout/layout";
 import Flavors from '../components/order/flavors';
-import SEO from "../components/layout/seo";
+import SEO from "../components/layout/helmet";
 
 export default ({ data: { backend: { sizeOne } } }) => {
   return (

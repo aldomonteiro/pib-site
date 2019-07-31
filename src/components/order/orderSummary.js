@@ -6,7 +6,7 @@ import ItemSummary from './itemSummary';
 import { format } from '../../utils';
 
 const OrderSummary = () => {
-  const items = useSelector(state => state.items);
+  const items = useSelector(state => state.redux.items);
   let total = 0;
   items.forEach(element => {
     total += element.price;
@@ -26,7 +26,7 @@ const OrderSummary = () => {
         )}
       </Card.Body>
       <Card.Footer>
-        <ButtonGroup enableButtons={true} />
+        <ButtonGroup enableButtons={true} to2={"/entrega"} />
       </Card.Footer>
     </Card>
   )

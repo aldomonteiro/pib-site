@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Layout from "../components/layout/layout";
 import DetailsCard from '../components/detailsCard'
 import NavButton from '../components/navButton';
-import SEO from "../components/layout/seo";
+import SEO from "../components/layout/helmet";
 import { format } from "../utils";
 
 export default ({ data: { backend: { categoryOne } } }) => {

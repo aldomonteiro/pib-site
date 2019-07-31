@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'gatsby';
 
 const CartIcon = () => {
-  const numItems = useSelector(state => state.items ? state.items.length : 0);
+  const numItems = useSelector(state => state.redux.items ? state.redux.items.length : 0);
   return (
     <Link to="/pedido">
       <div style={{position:'fixed', zIndex:10001, top: '1rem', right: '1rem'}}>

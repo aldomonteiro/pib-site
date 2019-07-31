@@ -14,7 +14,7 @@ export default (previousState = defaultState, { type, payload }) => {
         price: payload.price
       }
       // se já existem items no store, adiciona um novo item com um id maior
-      if (previousState.items && previousState.items.length > 0) {
+      if (previousState && previousState.items && previousState.items.length > 0) {
         item.id = previousState.items.length + 1;
 
         return {
@@ -23,12 +23,13 @@ export default (previousState = defaultState, { type, payload }) => {
           currentItem: item.id,
         };
       }
-      else
+      else {
         return {
           ...previousState,
           items: [item],
           currentItem: item.id
         };
+      }
     case actions.UPDATE_ITEM:
       // seleciona o item a ser atualizado
       const currentItem = previousState.currentItem;
@@ -59,10 +60,10 @@ export default (previousState = defaultState, { type, payload }) => {
         }
       } else return previousState;
     case actions.REMOVE_ITEM:
-      if (previousState.items && previousState.items.length > 0)
+      if (previousState.redux.items && previousState.redux.items.length > 0)
         return {
           ...previousState,
-          items: previousState.items.filter(el => el.id !== payload.id)
+          items: previousState.redux.items.filter(el => el.id !== payload.id)
         };
       else
         return previousState;

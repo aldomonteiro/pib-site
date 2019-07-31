@@ -82,7 +82,7 @@ function SEO ({ description, lang, meta, title }) {
             color: white;
           }
           .btn-flat:not(:disabled).active {
-            background-color: purple;
+            background-color: primary;
             color: white;
           }
         `}

@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 
 import Layout from "../components/layout/layout";
 import DetailsCard from '../components/detailsCard';
-import SEO from "../components/layout/seo";
+import SEO from "../components/layout/helmet";
 import NavButton from '../components/navButton';
 
 export default ({ data: { backend: { sizeOne } } }) => {

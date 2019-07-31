@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import Layout from "../components/layout/layout"
-import SEO from "../components/layout/seo"
+import SEO from "../components/layout/helmet"
 import DetailsCard from '../components/detailsCard'
 import Menu from "../components/menu";
 import NavButton from '../components/navButton';

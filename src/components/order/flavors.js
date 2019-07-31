@@ -12,8 +12,8 @@ import { UPDATE_ITEM } from '../../actions'
 
 
 const Flavors = ({ pricings }) => {
-  const currentItem = useSelector(state => state.currentItem);
-  const item = useSelector(state => state.items).find(el => el.id === currentItem);
+  const currentItem = useSelector(state => state.redux.currentItem);
+  const item = useSelector(state => state.redux.items).find(el => el.id === currentItem);
   const [selecteds, setSelecteds] = useState([]);
   const [showNotif, setShowNotif] = useState(false);
   const dispatch = useDispatch();
